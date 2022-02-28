@@ -79,10 +79,11 @@ console.log(DOMitems);
         // Unidades
         const miNodoUnidades = document.createElement('p');
         miNodoUnidades.classList.add('card-text');
+        miNodoUnidades.classList.add(`unidades-${info.id}`);
         miNodoUnidades.textContent = `Unidades disponibles: ${info.unidades}`;
         // Boton Agregar
         const miNodoBotonAgregar = document.createElement('button');
-        miNodoBotonAgregar.classList.add('btn', 'btn-success','mt-2','mb-2');
+        miNodoBotonAgregar.classList.add('btn', 'btn-success','mt-2','mb-2',`btn-${info.id}`);
         miNodoBotonAgregar.textContent = 'AGREGAR A LA CESTA';
         miNodoBotonAgregar.setAttribute('marcador', info.id);
         miNodoBotonAgregar.addEventListener('click', anyadirProductoAlCarrito);
@@ -118,6 +119,18 @@ console.log(DOMitems);
         // ¿Coincide las id? Solo puede existir un caso
         return itemBaseDatos.id == parseInt(e.currentTarget.getAttribute('marcador'));
     });
+    const unidades = document.getElementsByClassName(`unidades-${miItem[0].id}`);
+    const btn = document.getElementsByClassName(`btn-${miItem[0].id}`);
+    console.log("AQUI: " + unidades[0].textContent);
+    if(miItem[0].unidades!=0){
+        miItem[0].unidades --;
+    }
+
+    if(miItem[0].unidades==0){
+        btn[0].disabled = true;
+    }
+    unidades[0].innerHTML=`<p class="card-text unidades-${miItem[0].id}">Unidades disponibles: ${miItem[0].unidades} </p>`;
+    
 
     console.log(miItem[0].precio);
     precioTotal = precioTotal + parseInt(miItem[0].precio);
