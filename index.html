@@ -6,36 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/scripts.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        $( function() {
-          $( "#accordion" ).accordion({
-            collapsible: true
-          });
-        } );
-
-        renderizarProductos();
-
-
-      });
-
-
-    </script>
-    
-
-
-  <script>
- 
-  </script>
     <title>Trabajo intermedio frontend</title>
 </head>
 <body>
-   
+  
     <div class="container">
 
         <header>
@@ -56,49 +30,8 @@
             <div class="col-12 col-lg-8 col-md-8">
                 <div id="accordion">
                     <h3>CATEGORIA 1</h3>
-                    <div class="row items">
-                     <!-- <div class="col-12 col-lg-4">
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/nintendo-switch.jpeg" class="imagen-producto card-img-top" alt="nintendo-switch">
-                          <div class="card-body">
-                            <h5 class="card-title">Nintendo Switch</h5>
-                            <p class="card-text">Codigo: 001</p>
-                            <p class="card-text">Consola Nintendo Swith version standard</p>
-                            <p class="card-text">349,99€</p>
-                            <p class="card-text">50 unidades en Stock</p>
-                            <a href="#" class="mt-2 mb-2 btn btn-success">AGREGAR A LA CESTA</a>
-                            <a href="#" class="mt-2 mb-2 btn btn-danger">ELIMINAR LA CESTA</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/nintendo-switch.jpeg" class="imagen-producto card-img-top" alt="nintendo-switch">
-                          <div class="card-body">
-                            <h5 class="card-title">Nintendo Switch</h5>
-                            <p class="card-text">Codigo: 001</p>
-                            <p class="card-text">Consola Nintendo Swith version standard</p>
-                            <p class="card-text">349,99€</p>
-                            <p class="card-text">50 unidades en Stock</p>
-                            <a href="#" class="mt-2 mb-2 btn btn-success">AGREGAR A LA CESTA</a>
-                            <a href="#" class="mt-2 mb-2 btn btn-danger">ELIMINAR LA CESTA</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-4">
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/nintendo-switch.jpeg" class="imagen-producto card-img-top" alt="nintendo-switch">
-                          <div class="card-body">
-                            <h5 class="card-title">Nintendo Switch</h5>
-                            <p class="card-text">Codigo: 001</p>
-                            <p class="card-text">Consola Nintendo Swith version standard</p>
-                            <p class="card-text">349,99€</p>
-                            <p class="card-text">50 unidades en Stock</p>
-                            <a href="#" class="mt-2 mb-2 btn btn-success">AGREGAR A LA CESTA</a>
-                            <a href="#" class="mt-2 mb-2 btn btn-danger">ELIMINAR LA CESTA</a>
-                          </div>
-                        </div>
-                      </div>-->
+                    <div id="items" class="row">
+                     
                     </div>
                     <h3>CATEGORIA 2</h3>
                     <div>
@@ -134,17 +67,44 @@
             <div class="col-12 col-lg-4 col-md-4">
               <h2>Carrito</h2>
               <!-- Elementos del carrito -->
-              <div class="carrito list-group"></div>
+              <div id="carrito"></div>
               <hr>
               <!-- Precio total -->
-              <p class="text-right">Total: <span class="total"></span>&euro;</p>
+              <p class="text-right">Total: <span id="total"></span>&euro;</p>
               <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
             </div>
         </div>
     </div>
     
-    
+    <script>
+      
+      
 
+
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        $( function() {
+          $( "#accordion" ).accordion({
+            collapsible: true
+          });
+        } );
+
+        renderizarProductos();
+        
+       
+
+
+      });
+
+
+    </script>
     
+   
 </body>
 </html>
