@@ -165,7 +165,6 @@ function renderizarCarrito2(){
         miNodoBotonEliminar.classList.add('btn', 'btn-danger','mt-2','mb-2',`btn-eliminar-${miItem.id}`);
         miNodoBotonEliminar.textContent = 'ELIMINAR DE LA CESTA';
         miNodoBotonEliminar.setAttribute('marcador', miItem.id);
-        miNodoBotonEliminar.dataset.item = item;
         miNodoBotonEliminar.addEventListener('click', eliminarProductoDelCarrito);
         // Insertamos
         miNodoCardBody.appendChild(miNodoImagen);
@@ -182,7 +181,11 @@ function renderizarCarrito2(){
 
 
         
-       
+        
+        miBoton.addEventListener('click', borrarItemCarrito);
+        // Mezclamos nodos
+        miNodo.appendChild(miBoton);
+        DOMcarrito.appendChild(miNodo);
     });
     // Renderizamos el precio total en el HTML
     DOMtotal.textContent = calcularTotal();
