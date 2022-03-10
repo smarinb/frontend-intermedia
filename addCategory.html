@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Trabajo intermedio frontend</title>
+</head>
+<body>
+  
+    <div class="container">
+
+        <header>
+            <h1 class="text-center mt-2 mb-2">Tienda de Productos y Categorias</h1>
+        </header>
+        
+        
+        <hr>
+        <h2 class="text-center">Agregar Categorias</h2>
+        <div class="row">
+            
+                <form  id="addCategory">
+                    <div class="form-group">
+                      <label for="category">Categoria</label>
+                      <input type="text" class="form-control mt-3 mb-4" id="category" name="category" placeholder="Introduce la categoria" required>
+                      
+                    </div>
+                    
+                    <input type="button" value="Agregar Categoria" onclick="agregar()"><br>
+                    <button onclick="location.href='http://127.0.0.1:5500/index.html';" type="button" class="mt-3 btn btn-success">Volver</button>
+                  </form>
+        </div>
+    </div>
+    
+    <script>
+        
+       function agregar(){
+           const categoria = document.getElementById('category').value;
+           console.log(categorias);
+           if(!categorias.includes(categoria)){
+                categorias.push(categoria);
+           }else{
+               console.log("Esa categoria esta incluida ya");
+           }
+           
+           console.log(categorias);
+           localStorage.setItem("categorias",JSON.stringify(categorias));
+           console.log(JSON.parse(localStorage.getItem("categorias")));
+       }
+       
+
+
+    </script>
+
+
+
+
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/scripts.js"></script>
+    
+    
+   
+</body>
+</html>

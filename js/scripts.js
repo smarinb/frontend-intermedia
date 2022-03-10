@@ -39,13 +39,28 @@ const baseDeDatos = [
         imagen: './img/ps5.jpeg',
         unidades: 10,
         categoria:'videoconsolas'
+    },
+    {
+        id: 6,
+        descripcion: 'Consola PS5',
+        precio: 499.95,
+        imagen: './img/ps5.jpeg',
+        unidades: 10,
+        categoria:'videoconsolas'
     }
 
 ];
 
 let carrito = [];
 let productosAnadidos = [];
+
 let categorias = ["videoconsolas","electrodomesticos","plantas","sofas"];
+if(JSON.parse(localStorage.getItem("categorias"))!=null){
+    console.log("entro aqui");
+    categorias = JSON.parse(localStorage.getItem("categorias"));
+
+}
+
 
 
 
@@ -66,6 +81,15 @@ const DOMcarrito = document.getElementById('carrito');
 const DOMtotal = document.getElementById('total');
 const DOMbotonVaciar = document.getElementsByClassName('boton-vaciar');
 
+const miNodoBotonEliminarCarrito = document.getElementById('boton-vaciar');
+miNodoBotonEliminarCarrito.addEventListener('click', vaciarCarrito);
+
+function vaciarCarrito(){
+    document.getElementById('carrito').innerHTML = '';
+    document.getElementById('total').innerHTML = '';
+    carrito = [];
+    precioTotal = 0;
+}
 
 function renderizarCategorias(){
     categorias.forEach((categoria =>{
@@ -302,7 +326,7 @@ function contarProductos(id){
     
 
     //console.log(miItem[0].precio);
-    precioTotal = precioTotal + parseInt(miItem[0].precio);
+    precioTotal = precioTotal + parseFloat(miItem[0].precio);
     
     carrito.push(e.currentTarget.getAttribute('marcador'));
 
