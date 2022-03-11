@@ -1,5 +1,8 @@
+
+
+
 // Variables
-const baseDeDatos = [
+let baseDeDatos = [
     {
         id: 1,
         descripcion: 'Consola Nintendo Switch',
@@ -51,13 +54,23 @@ const baseDeDatos = [
 
 ];
 
+
+
 let carrito = [];
 let productosAnadidos = [];
+
+
 
 let categorias = ["videoconsolas","electrodomesticos","plantas","sofas"];
 if(JSON.parse(localStorage.getItem("categorias"))!=null){
     console.log("entro aqui");
     categorias = JSON.parse(localStorage.getItem("categorias"));
+
+}
+
+if(JSON.parse(localStorage.getItem("productos"))!=null){
+    console.log("PRODUCTO");
+    baseDeDatos = JSON.parse(localStorage.getItem("productos"));
 
 }
 
@@ -80,6 +93,8 @@ const DOMtest = document.getElementById('test');
 const DOMcarrito = document.getElementById('carrito');
 const DOMtotal = document.getElementById('total');
 const DOMbotonVaciar = document.getElementsByClassName('boton-vaciar');
+const DOMbotonComprar = document.getElementById('boton-comprar');
+DOMbotonComprar.addEventListener('click',realizarPedido);
 
 const miNodoBotonEliminarCarrito = document.getElementById('boton-vaciar');
 miNodoBotonEliminarCarrito.addEventListener('click', vaciarCarrito);
@@ -89,6 +104,51 @@ function vaciarCarrito(){
     document.getElementById('total').innerHTML = '';
     carrito = [];
     precioTotal = 0;
+}
+
+
+
+
+
+function realizarPedido(){
+    if(carrito.length !=0){
+        swal({
+            title: "¿Estas seguro de que quieres realizar la compra. No podrás dar marcha atras?",
+            text: "Una vez realizada la compra no habrá marcha atras... ",
+            icon: "info",
+            buttons: true,
+            dangerMode: false,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("!Compra realizada con exito!", {
+                icon: "success",
+              });
+              document.getElementById('carrito').innerHTML = '';
+                document.getElementById('total').innerHTML = '';
+                carrito = [];
+                precioTotal = 0;
+            } else {
+              swal("Pareces indeciso, piensatelo más antes de ir a pagar!");
+            }
+          });
+       /* var resultado = window.confirm('¿Estas seguro de que quieres realizar la compra. No podrás dar marcha atras?');
+            if (resultado === true) {
+
+                window.alert('Compra realizada con exito.');
+                document.getElementById('carrito').innerHTML = '';
+                document.getElementById('total').innerHTML = '';
+                carrito = [];
+                precioTotal = 0;
+            } else { 
+                window.alert('Pareces indeciso, piensatelo más antes de ir a pagar');
+            }*/
+    }else{
+        swal({icon:'warning',
+              text:'El carrito esta vacio antes tiene que añadir al menos un producto'
+            });
+    }
+    
 }
 
 function renderizarCategorias(){
@@ -198,6 +258,7 @@ function contarProductos(id){
 
  function renderizarCarrito() {
    DOMcarrito.innerHTML = '';
+   
 
             if(carrito.length == 0){
                 console.log("CARRITO VACIO");
@@ -206,7 +267,7 @@ function contarProductos(id){
             }else{
         
               
-        
+                
  
             carrito.forEach((id)=>{
                 
@@ -388,6 +449,26 @@ function eliminarProductoDelCarrito(e){
 
 }
 
+function exiteId(id){
+    let exite= false;
+
+    baseDeDatos.forEach((producto)=>{
+        if(producto.id == id)
+            exite = true;
+    })
+    return exite;
+}
+
+
+function exiteCategoria(categoria){
+    let exite= false;
+
+    categorias.forEach((c)=>{
+        if(categoria == c)
+            exite = true;
+    })
+    return exite;
+}
 
 
 
