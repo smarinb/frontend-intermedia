@@ -41,8 +41,11 @@
            console.log(categorias);
            if(!categorias.includes(categoria)){
                 categorias.push(categoria);
+                swal({icon:"success",
+            text:"Categoria agregada con exito"});
            }else{
-               console.log("Esa categoria esta incluida ya");
+            swal({icon:"warning",
+            text:"No puede añadir la categoria " + category + " ya existe en nuestra base de datos"});
            }
            
            console.log(categorias);
@@ -63,7 +66,7 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/scripts.js"></script>
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
    
 </body>

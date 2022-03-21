@@ -81,9 +81,13 @@ function mostrar(){
             const categoria = document.getElementById('categoria').value;
 
             if(exiteId(id)){
-                alert("El producto con id " + id + " ya está en nuestra base de datos no puede añadirlo.");
+                swal({icon:"warning",
+            text:"El producto con id " + id + " ya está en nuestra base de datos no puede añadirlo."});
+               
             }else if(!exiteCategoria(categoria)){
-                alert("La categoria " + categoria + " no exite en nuestra base de datos no puede añadir un producto de una categoria que no existe.");
+                swal({icon:"warning",
+            text:"La categoria " + categoria + " no exite en nuestra base de datos no puede añadir un producto de una categoria que no existe."});
+                
             }else{
                 const producto = {
                 id,descripcion,precio,unidades,categoria,imagen
@@ -91,6 +95,8 @@ function mostrar(){
                 baseDeDatos.push(producto);
                 localStorage.setItem("productos",JSON.stringify(baseDeDatos));
                 //console.log(JSON.parse(localStorage.getItem("categorias")));
+                swal({icon:"success",
+            text:"Se ha añadido el producto con exito!!"});
 
             }
            
@@ -110,7 +116,7 @@ function mostrar(){
     <script src="js/jquery-ui.js"></script>
     <script src="js/scripts.js"></script>
     
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    
 </body>
 </html>
